@@ -532,7 +532,7 @@ func isSupportedKind(k reflect.Kind) bool {
 // which is a signal to skip this field.
 func (e *Encoder) getFieldName(field reflect.StructField) string {
 	if e.useTags {
-		name := field.Tag.Get(e.tag)
+		name := strings.Split(field.Tag.Get(e.tag), ",")[0]
 		// skip columns tagged with -
 		if name == "-" {
 			return ""
